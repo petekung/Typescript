@@ -9,6 +9,7 @@ import Newfooter from "./footer";
 import List from "./component/List";
 import From from "./component/From";
 import AuthUser from "./Auth";
+import AppContext from "./AppContext";
 import { SeriesProps } from "./interfaces/SeriesProps";
 export type DataType = {
   id: number;
@@ -55,7 +56,7 @@ const App: React.FC = () => {
   // }, []);
   // const [items, setItems] = useState<DataType[]>([] as DataType[]);
   const [count, setCount] = useState(0);
-  const fakeUser  = {username:'PETE123',fullname: ' เต้า หมิงซื่อ'}
+  const fakeUser = { username: "PETE123", fullname: " เต้า หมิงซื่อ" };
   const AutContext = React.createContext();
   const [seriesList, setseriesList] = useState<SeriesProps["seriesList"]>([]);
   useEffect(() => {
@@ -65,7 +66,6 @@ const App: React.FC = () => {
     console.log("Use Effect count : " + count);
   }, [count]);
   return (
-    
     <Layout style={{ minHeight: "200vh" }}>
       <Sider
         collapsible
@@ -116,6 +116,10 @@ const App: React.FC = () => {
 
                 <Random />
                 <Newfooter select={select} setSelect={setSelect} />
+                <br></br>
+                <br></br>
+                <br></br>
+                <AppContext />
               </div>
             </Col>
             <Col span={14}>

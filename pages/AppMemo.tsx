@@ -10,24 +10,27 @@ function AppMemo() {
     return n <= 0 ? 0 : n === 1 ? 1 : fibo(n - 1) + fibo(n - 2);
   };
 
-  //const f = fibo(count)
-  const f = useMemo(() => {
-    return fibo(count);
-  }, [count]);
+  const f = fibo(count)
+  // const f = useMemo(() => {
+  //   return fibo(count);
+  // }, [count]);
 
   return (
     <>
       <Layout style={{ minHeight: "200vh" }}>
         <Content>
           <Row>
-            <Col span={11}></Col>
-            <Col span={13}>
-              <h1 style={{ marginTop: 50 }}>
+            <Col span={0}></Col>
+            <Col span={24} style={{textAlign: "center" }}>
+              <h1 style={{textAlign: "center" }}>
+                Learn Hook Memo
+              </h1>
+              <h1 style={{ marginTop: 50 ,textAlign: "center" }} >
                 Count = {count} <br></br>
               </h1>
-              Fibo = {f}
+              Fibo Count  = {f}
               <br></br>
-              <Button onClick={() => setCount(count + 1)}>Add conut </Button>
+              <Button onClick={() => setCount(count + 1)} > Add conut </Button>
               <br></br>
               <h1>
                 Count2 = {count2} <br></br>

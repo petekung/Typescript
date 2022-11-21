@@ -1,5 +1,6 @@
 import { Button, Layout, Menu } from "antd";
 import { Image, Row, Col } from "antd";
+import React from "react";
 import { useEffect, useState } from "react";
 import Random from "./Random";
 import BMI from "./BMI";
@@ -33,27 +34,29 @@ const App: React.FC = () => {
   });
 
   let liff: any;
-  useEffect(() => {
-    liff = require("@line/liff");
-    const lineLiff = async () => {
-      try {
-        await liff.init({ liffId: `${process.env.NEXT_PUBLIC_LIFF_ID}` });
-      } catch (error) {
-        console.error("liff init error");
-      }
-      if (!liff.isLoggedIn()) {
-        liff.login();
-      }
-      const lineProflie = await liff.getProfile();
-      setProfile(lineProflie);
-    };
-    lineLiff();
+  // useEffect(() => {
+  //   liff = require("@line/liff");
+  //   const lineLiff = async () => {
+  //     try {
+  //       await liff.init({ liffId: `${process.env.NEXT_PUBLIC_LIFF_ID}` });
+  //     } catch (error) {
+  //       console.error("liff init error");
+  //     }
+  //     if (!liff.isLoggedIn()) {
+  //       liff.login();
+  //     }
+  //     const lineProflie = await liff.getProfile();
+  //     setProfile(lineProflie);
+  //   };
+  //   lineLiff();
 
-    // console.log(process.env.NEXT_PUBLIC_LIFF_ID);
-    // console.log(profile);
-  }, []);
+  //   // console.log(process.env.NEXT_PUBLIC_LIFF_ID);
+  //   // console.log(profile);
+  // }, []);
   // const [items, setItems] = useState<DataType[]>([] as DataType[]);
   const [count, setCount] = useState(0);
+  const fakeUser  = {username:'PETE123',fullname: ' เต้า หมิงซื่อ'}
+  const AutContext = React.createContext();
   const [seriesList, setseriesList] = useState<SeriesProps["seriesList"]>([]);
   useEffect(() => {
     console.log("Use Effect ");
@@ -62,6 +65,7 @@ const App: React.FC = () => {
     console.log("Use Effect count : " + count);
   }, [count]);
   return (
+    
     <Layout style={{ minHeight: "200vh" }}>
       <Sider
         collapsible
@@ -116,7 +120,9 @@ const App: React.FC = () => {
             </Col>
             <Col span={14}>
               <BMI /> <h1 style={{ fontSize: 30 }}>Conditional Rendering</h1>
-              <AuthUser /><br></br> <Button
+              <AuthUser />
+              <br></br>{" "}
+              <Button
                 type="primary"
                 onClick={() => {
                   setCount((prev) => prev + 1);
@@ -126,7 +132,6 @@ const App: React.FC = () => {
                 Number Click ={count}
               </Button>
             </Col>
-           
           </Row>
           <Row>
             <Col span={15}>

@@ -10,6 +10,7 @@ import List from "./component/List";
 import From from "./component/From";
 import AuthUser from "./Auth";
 import AppContext from "./AppContext";
+import AppReducer from "./AppReducer";
 import { SeriesProps } from "./interfaces/SeriesProps";
 export type DataType = {
   id: number;
@@ -120,6 +121,7 @@ const App: React.FC = () => {
                 <br></br>
                 <br></br>
                 <AppContext />
+                <AppReducer/>
               </div>
             </Col>
             <Col span={14}>
